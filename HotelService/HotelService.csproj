@@ -9,9 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BusinesslogicLayer\" />
-    <Folder Include="DTO%27s\" />
-    <Folder Include="ModelConversion\" />
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
   </ItemGroup>
 
 </Project>
