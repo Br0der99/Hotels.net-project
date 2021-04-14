@@ -5,8 +5,8 @@ using Model;
 
 namespace HotelService.Services
 {
-    public interface IUserService
+    public interface IPersonService
     {
-        ValueTask<IEnumerable<User>> FindAllUsers();
+        ValueTask<IEnumerable<Person>> FindAllPersons();
     }
 }

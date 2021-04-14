@@ -10,19 +10,19 @@ namespace HotelService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UserController : Controller
+    public class PersonController : Controller
     {
-        private readonly IUserService _userService;
+        private readonly IPersonService _personService;
 
-        public UserController(IUserService userService)
+        public PersonController(IPersonService personService)
         {
-            _userService = userService;
+            _personService = personService;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllUsers()
+        public async Task<IActionResult> GetAllPersons()
         {
-            var users = await _userService.FindAllUsers();
+            var users = await _personService.FindAllPersons();
             return Ok(users);
         }
     }

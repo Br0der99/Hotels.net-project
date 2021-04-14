@@ -4,8 +4,8 @@ using Model;
 
 namespace DataAccess
 {
-    public interface IUserRepository
+    public interface IPersonRepository
     {
-        Task<IEnumerable<User>> FindAllUsers();
+        Task<IEnumerable<Person>> FindAllPersons();
     }
 }

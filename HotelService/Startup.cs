@@ -30,9 +30,9 @@ namespace HotelService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<ICommandText, CommandText>();
-            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IPersonRepository, PersonRepository>();
             
-            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IPersonService, PersonService>();
             
             services.AddControllers();
             services.AddSwaggerGen(c =>

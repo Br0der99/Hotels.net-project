@@ -7,20 +7,20 @@ using Dapper;
 
 namespace DataAccess
 {
-    public class UserRepository : BaseRepository, IUserRepository
+    public class PersonRepository : BaseRepository, IPersonRepository
     {
         private readonly ICommandText _commandText;
         
-        public UserRepository(IConfiguration configuration, ICommandText commandText) : base(configuration)
+        public PersonRepository(IConfiguration configuration, ICommandText commandText) : base(configuration)
         {
             _commandText = commandText;
         }
         
-        public async Task<IEnumerable<User>> FindAllUsers()
+        public async Task<IEnumerable<Person>> FindAllPersons()
         {
             return await WithConnection(async con =>
             {
-                return await con.QueryAsync<User>(_commandText.FindAllUsers);
+                return await con.QueryAsync<Person>(_commandText.FindAllUsers);
             });
         }
     }
