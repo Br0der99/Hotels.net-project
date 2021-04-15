@@ -4,13 +4,8 @@ using System.Text;
 
 namespace Model
 {
-    class RoomTypes
+    public enum RoomTypes
     {
-        public int RoomId { get; set; }
-
-        public RoomTypes()
-        {
-
-        }
+        Singlebed, Doublebed, FamilyRoom, Suite;
     }
 }
