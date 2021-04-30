@@ -12,8 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataAccess;
-using DataAccess.Queries;
 using HotelService.Services;
+using Model;
 
 namespace HotelService
 {
@@ -29,10 +29,13 @@ namespace HotelService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<ICommandText, CommandText>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IRoomRepository, RoomRepository>();
+            services.AddTransient<IRoomTypeRepository, RoomTypeRepository>();
             
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRoomService, RoomService>();
+            
             
             services.AddControllers();
             services.AddSwaggerGen(c =>
