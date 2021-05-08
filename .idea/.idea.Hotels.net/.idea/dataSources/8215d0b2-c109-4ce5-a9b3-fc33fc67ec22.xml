@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="Microsoft SQL Server - dmaa0220_1083750@Hildur.ucn.dk">
-  <database-model serializer="dbm" dbms="MSSQL" family-id="MSSQL" format-version="4.20">
+  <database-model serializer="dbm" dbms="MSSQL" family-id="MSSQL" format-version="4.21">
     <root id="1">
       <ServerVersion>15.0.2080</ServerVersion>
       <PermissionsCheckSum>9477370187</PermissionsCheckSum>
-      <Grants>0|root||1|connect sql|G
-0|root||2|view any database|G
-0|root||400|connect sql|G
+      <Grants>-9223372036854775808|||-9223372036854775808||G
 2|||2|connect|G
 3|||2|connect|G
 4|||2|connect|G
 5|||2|connect|G
-</Grants>
+0|root||1|connect sql|G
+0|root||400|connect sql|G
+0|root||2|view any database|G</Grants>
     </root>
     <database id="2" parent="1" name="Covid-19_Stats">
       <ObjectId>123</ObjectId>
@@ -76,12 +76,12 @@
     <database id="17" parent="1" name="dmaa0220_1083750">
       <ObjectId>63</ObjectId>
       <PermissionsCheckSum>5314273712</PermissionsCheckSum>
-      <Grants>63|database||0|view any column encryption key definition|G
-63|database||0|view any column master key definition|G
+      <Grants>-9223372036854775808|||-9223372036854775808||G
 63|database||1|connect|G
 63|database||5|connect|G
 63|database||6|connect|G
-</Grants>
+63|database||0|view any column encryption key definition|G
+63|database||0|view any column master key definition|G</Grants>
       <Current>1</Current>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
       <Fingerprint>63.44105/AB5FE005-4BE5-49BA-A16B-961789823E3F@it-sql02-dmzskn</Fingerprint>
