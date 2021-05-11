@@ -16,7 +16,7 @@ namespace migrationsTest
                 .WithColumn("cityId").AsInt64().Unique()
                 .WithColumn("zipCode").AsInt32().Unique();
 
-            Create.ForeignKey("cityZipode_cityId_city_id")
+            Create.ForeignKey("cityZipcode_cityId_city_id")
                 .FromTable("cityZipcode").ForeignColumn("cityId")
                 .ToTable("city").PrimaryColumn("id");
 
@@ -49,7 +49,14 @@ namespace migrationsTest
 
         public override void Down()
         {
-            
+            Delete.ForeignKey("address_cityZipId_cityZipcode_id");
+            Delete.ForeignKey("address_streetNumberId_streetNumber");
+            Delete.Table("address");
+            Delete.ForeignKey("streetNumber_streetId_street_id");
+            Delete.Table("streetNumber");
+            Delete.Table("street");
+            Delete.ForeignKey("cityZipcode_cityId_city_id");
+            Delete.Table("cityZipcode");
         }
     }
 }
