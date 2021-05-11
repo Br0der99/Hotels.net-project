@@ -2,7 +2,7 @@
 using FluentMigrator.Runner;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using HotelService;
+using Microsoft.Extensions.Configuration;
 
 namespace migrationsTest
 {
@@ -33,7 +33,7 @@ namespace migrationsTest
                     // Add SQLite support to FluentMigrator
                     .AddSqlServer()
                     // Set the connection string
-                    .WithGlobalConnectionString(Configuration.GetConnection("DefaultString"))
+                    .WithGlobalConnectionString("Server=hildur.ucn.dk;Database=dmaa0220_1083750;User Id=dmaa0220_1083750;Password=Password1!;Trusted_Connection=False;")
                     // Define the assembly containing the migrations
                     .ScanIn(typeof(AddRoomTable).Assembly).For.Migrations())
                 // Enable logging to console in the FluentMigrator way

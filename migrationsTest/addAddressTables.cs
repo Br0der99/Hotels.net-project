@@ -49,7 +49,7 @@ namespace migrationsTest
 
         public override void Down()
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }
