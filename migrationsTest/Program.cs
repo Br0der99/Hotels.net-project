@@ -35,7 +35,11 @@ namespace migrationsTest
                     // Set the connection string
                     .WithGlobalConnectionString("Server=hildur.ucn.dk;Database=dmaa0220_1083750;User Id=dmaa0220_1083750;Password=Password1!;Trusted_Connection=False;")
                     // Define the assembly containing the migrations
-                    .ScanIn(typeof(AddRoomTable).Assembly).For.Migrations())
+                    .ScanIn(typeof(AddAddressTables).Assembly).For.Migrations()
+                    .ScanIn(typeof(AddPersonsTables).Assembly).For.Migrations()
+                    .ScanIn(typeof(AddBookingStatusTable).Assembly).For.Migrations()
+                    .ScanIn(typeof(AddBookingTable).Assembly).For.Migrations()
+                    .ScanIn(typeof(AddRoomsTable).Assembly).For.Migrations())
                 // Enable logging to console in the FluentMigrator way
                 .AddLogging(lb => lb.AddFluentMigratorConsole())
                 // Build the service provider
