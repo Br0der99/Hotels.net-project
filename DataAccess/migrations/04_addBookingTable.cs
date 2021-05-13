@@ -1,16 +1,12 @@
 ﻿using FluentMigrator;
 
-namespace migrationsTest
+namespace DataAccess.migrations
 {
-    [Migration(1)]
+    [Migration(4)]
     public class AddBookingTable : Migration
     {
         public override void Up()
         {
-            Create.Table("bookingStatus")
-                .WithColumn("id").AsInt64().Identity().PrimaryKey()
-                .WithColumn("bookingStatus").AsBoolean();
-
             Create.Table("booking")
                 .WithColumn("id").AsInt64().Identity().PrimaryKey()
                 .WithColumn("bookingFrom").AsDate().NotNullable()
@@ -23,10 +19,6 @@ namespace migrationsTest
             Create.ForeignKey("booking_customerId_customer_id")
                 .FromTable("booking").ForeignColumn("customerId")
                 .ToTable("customer").PrimaryColumn("id");
-
-            Create.ForeignKey("booking_roomId_room_id")
-                .FromTable("booking").ForeignColumn("roomId")
-                .ToTable("rooms").PrimaryColumn("id");
         }
 
         public override void Down()

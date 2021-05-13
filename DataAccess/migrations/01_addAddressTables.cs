@@ -1,6 +1,6 @@
 ﻿using FluentMigrator;
 
-namespace migrationsTest
+namespace DataAccess.migrations
 {
     [Migration(1)]
     public class AddAddressTables : Migration

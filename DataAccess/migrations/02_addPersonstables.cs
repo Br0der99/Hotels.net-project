@@ -1,8 +1,8 @@
 ﻿using FluentMigrator;
 
-namespace migrationsTest
+namespace DataAccess.migrations
 {
-    [Migration(1)]
+    [Migration(2)]
     public class AddPersonsTables : Migration
     {
         public override void Up()

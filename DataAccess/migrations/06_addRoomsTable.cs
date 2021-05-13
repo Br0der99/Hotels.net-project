@@ -1,17 +1,12 @@
 ﻿using FluentMigrator;
 
-namespace migrationsTest
+namespace DataAccess.migrations
 {
-    [Migration(2)]
+    [Migration(6)]
     public class AddRoomsTable : Migration
     {
         public override void Up()
         {
-            Create.Table("roomTypes")
-                .WithColumn("id").AsInt64().Identity().PrimaryKey()
-                .WithColumn("roomType").AsString().Unique();
-
-
             Create.Table("rooms")
                 .WithColumn("id").AsInt64().PrimaryKey().Identity()
                 .WithColumn("roomNumber").AsInt64().NotNullable()
@@ -32,13 +27,16 @@ namespace migrationsTest
             Create.ForeignKey("rooms_bookingStatusId_bookingStatus_id")
                 .FromTable("rooms").ForeignColumn("bookingStatusId")
                 .ToTable("bookingStatus").PrimaryColumn("id");
+            
+            Create.ForeignKey("booking_roomId_room_id")
+                .FromTable("booking").ForeignColumn("roomId")
+                .ToTable("rooms").PrimaryColumn("id");
         }
 
         public override void Down()
         {
             Delete.ForeignKey("rooms_bookingStatusId_bookingStatus_id");
             Delete.ForeignKey("rooms_roomTypeId_roomTypes_id");
-            Delete.Table("roomTypes");
             Delete.Table("rooms");
         }
     }

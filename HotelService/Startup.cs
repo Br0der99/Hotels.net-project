@@ -10,8 +10,10 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using DataAccess;
+using FluentMigrator.Runner;
 using HotelService.Services;
 using Model;
 
@@ -36,6 +38,18 @@ namespace HotelService
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRoomService, RoomService>();
             
+            services.AddFluentMigratorCore()
+                .ConfigureRunner(rb => rb
+                    // Add SQLite support to FluentMigrator
+                    .AddSqlServer()
+                    // Set the connection string
+                    .WithGlobalConnectionString(Configuration.GetConnectionString("DefaultConnection"))
+                    // Define the assembly containing the migrations
+                    .ScanIn(Assembly.Load("DataAccess")).For.Migrations())
+                // Enable logging to console in the FluentMigrator way
+                .AddLogging(lb => lb.AddFluentMigratorConsole())
+                // Build the service provider
+                .BuildServiceProvider(false);
             
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -64,6 +78,11 @@ namespace HotelService
             {
                 endpoints.MapControllers();
             });
+
+            using (var scope = app.ApplicationServices.CreateScope()) {
+                var migrator = scope.ServiceProvider.GetService<IMigrationRunner>();
+                migrator.MigrateUp();
+            }
         }
     }
 }

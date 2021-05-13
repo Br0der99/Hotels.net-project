@@ -1,8 +1,8 @@
 ﻿using FluentMigrator;
 
-namespace migrationsTest
+namespace DataAccess.migrations
 {
-    [Migration(1)]
+    [Migration(3)]
     public class AddBookingStatusTable : Migration
     {
         public override void Up()
