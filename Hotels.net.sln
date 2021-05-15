@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{917C4AEC-4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppHotelManagement", "..\..\..\Desktop\Send to tektuition\Første Version\MvcCoreDemoApp\TekTuition\MvcCoreDemoApp\WebAppHotelManagement\WebAppHotelManagement.csproj", "{94C07ECC-75D1-4F54-B206-B8BD05AE1BF3}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperCRUD", "..\Dapper\WindowsFormsApp\DapperCRUD.csproj", "{1387C768-6A69-4E33-AD56-4ABBE7E961C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{94C07ECC-75D1-4F54-B206-B8BD05AE1BF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94C07ECC-75D1-4F54-B206-B8BD05AE1BF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94C07ECC-75D1-4F54-B206-B8BD05AE1BF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1387C768-6A69-4E33-AD56-4ABBE7E961C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1387C768-6A69-4E33-AD56-4ABBE7E961C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1387C768-6A69-4E33-AD56-4ABBE7E961C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1387C768-6A69-4E33-AD56-4ABBE7E961C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{0DCC23E9-E1B0-479F-8E8F-AC5F416B0707} = {917C4AEC-4317-4B25-86E7-7BC8EAAFD562}
 		{1FDB123C-AAE2-4963-879E-513FE5F0DC3B} = {917C4AEC-4317-4B25-86E7-7BC8EAAFD562}
 		{94C07ECC-75D1-4F54-B206-B8BD05AE1BF3} = {4F2CAA9D-E70A-46E9-B901-A7159AD41256}
+		{1387C768-6A69-4E33-AD56-4ABBE7E961C2} = {4F2CAA9D-E70A-46E9-B901-A7159AD41256}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8A4D9AF1-5FB3-4391-90BC-A6BCE9671E19}
