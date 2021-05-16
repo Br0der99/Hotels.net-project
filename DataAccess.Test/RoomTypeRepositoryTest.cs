@@ -37,7 +37,7 @@ namespace DataAccess.Test
             //Arrange
             _roomType = new RoomType()
             {
-                Name = "SingleBed"
+                RoomTypes = "SingleBed"
             };
 
             //Act

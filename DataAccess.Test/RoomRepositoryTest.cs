@@ -72,7 +72,7 @@ namespace DataAccess.Test
                 RoomType = new RoomType()
                 {
                     Id = 1,
-                    Name = "Suite"
+                    RoomTypes = "Suite"
                 }
             };
 
@@ -123,7 +123,7 @@ namespace DataAccess.Test
                 RoomType = new RoomType()
                 {
                     Id = 1,
-                    Name = "Suite"
+                    RoomTypes = "Suite"
                 }
             };
             
@@ -146,7 +146,7 @@ namespace DataAccess.Test
                 RoomType = new RoomType()
                 {
                     Id = 1,
-                    Name = "Suite"
+                    RoomTypes = "Suite"
                 }
             };
             

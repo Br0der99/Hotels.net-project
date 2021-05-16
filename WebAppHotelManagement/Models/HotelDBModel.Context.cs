@@ -28,9 +28,9 @@ namespace WebAppHotelManagement.Models
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Payments> Payments { get; set; }
         public virtual DbSet<RoomBookings> RoomBookings { get; set; }
-        public virtual DbSet<Rooms> Rooms { get; set; }
-        public virtual DbSet<BookingStatus> BookingStatus { get; set; }
+        public virtual DbSet<rooms> Rooms { get; set; }
+        public virtual DbSet<bookingStatus> BookingStatus { get; set; }
         public virtual DbSet<PaymentTypes> PaymentTypes { get; set; }
-        public virtual DbSet<RoomTypes> RoomTypes { get; set; }
+        public virtual DbSet<roomTypes> RoomTypes { get; set; }
     }
 }

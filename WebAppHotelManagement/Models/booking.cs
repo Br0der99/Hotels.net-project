@@ -12,18 +12,18 @@ namespace WebAppHotelManagement.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class roomTypes
+    public partial class booking
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public roomTypes()
-        {
-            this.rooms = new HashSet<rooms>();
-        }
-    
         public int id { get; set; }
-        public string roomType { get; set; }
+        public string customerName { get; set; }
+        public string customerAddress { get; set; }
+        public string customerPhone { get; set; }
+        public System.DateTime bookingFrom { get; set; }
+        public System.DateTime bookingTo { get; set; }
+        public int noOfMembers { get; set; }
+        public decimal totalAmount { get; set; }
+        public int roomId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<rooms> rooms { get; set; }
+        public virtual rooms rooms { get; set; }
     }
 }

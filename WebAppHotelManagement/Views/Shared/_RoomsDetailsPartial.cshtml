@@ -35,29 +35,29 @@
         {
             <tr>
                 <td>
-                    <span id="btnDelete" class="glyphicon glyphicon-trash" onclick="DeleteRoom(@item.RoomId)"></span> &nbsp;&nbsp;
-                    <span id="btnEdit" class="glyphicon glyphicon-pencil" onclick="EditRoom(@item.RoomId)"></span>
+                    <span id="btnDelete" class="glyphicon glyphicon-trash" onclick="DeleteRoom(@item.id)"></span> &nbsp;&nbsp;
+                    <span id="btnEdit" class="glyphicon glyphicon-pencil" onclick="EditRoom(@item.id)"></span>
                 </td>
                 <td>
-                    <img src="@Url.Content("~/RoomImages/" + item.RoomImage)" width="30" height="30" class="img-responsive" />
+                    <img src="@Url.Content("~/RoomImages/" + item.roomImage)" width="30" height="30" class="img-responsive" />
                 </td>
                 <td>
-                    @item.RoomNumber
+                    @item.roomNumber
                 </td>
                 <td>
-                    @item.RoomPrice
+                    @item.roomPrice
                 </td>
                 <td>
-                    @item.BookingStatus
+                    @item.bookingStatus
                 </td>
                 <td>
-                    @item.RoomType
+                    @item.roomType
                 </td>
                 <td>
-                    @item.RoomCapacity
+                    @item.roomCapacity
                 </td>
                 <td>
-                    @item.RoomDescription
+                    @item.roomDescription
                 </td>
             </tr>
         }

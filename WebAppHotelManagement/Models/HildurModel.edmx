@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dmaa0220_1083750Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customerName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="customerAddress" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="customerPhone" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="bookingFrom" Type="date" Nullable="false" />
+          <Property Name="bookingTo" Type="date" Nullable="false" />
+          <Property Name="noOfMembers" Type="int" Nullable="false" />
+          <Property Name="totalAmount" Type="decimal" Precision="19" Scale="5" Nullable="false" />
+          <Property Name="roomId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bookingStatus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bookingStatus" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rooms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="roomNumber" Type="nchar" MaxLength="5" Nullable="false" />
+          <Property Name="roomImage" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="roomTypeId" Type="int" Nullable="false" />
+          <Property Name="roomPrice" Type="int" Nullable="false" />
+          <Property Name="bookingStatusId" Type="int" Nullable="false" />
+          <Property Name="roomCapacity" Type="int" Nullable="false" />
+          <Property Name="roomDescription" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="roomTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="roomType" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="booking_roomId_room_id">
+          <End Role="rooms" Type="Self.rooms" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rooms">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="roomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rooms_bookingStatusId_bookingStatus_id">
+          <End Role="bookingStatus" Type="Self.bookingStatus" Multiplicity="1" />
+          <End Role="rooms" Type="Self.rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bookingStatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rooms">
+              <PropertyRef Name="bookingStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rooms_roomTypeId_roomTypes_id">
+          <End Role="roomTypes" Type="Self.roomTypes" Multiplicity="1" />
+          <End Role="rooms" Type="Self.rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roomTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rooms">
+              <PropertyRef Name="roomTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="RoomAddOrEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoomId" Type="int" Mode="In" />
+          <Parameter Name="RoomNumber" Type="varchar" Mode="In" />
+          <Parameter Name="RoomImage" Type="varchar" Mode="In" />
+          <Parameter Name="RoomPrice" Type="int" Mode="In" />
+          <Parameter Name="BookingStatusId" Type="int" Mode="In" />
+          <Parameter Name="RoomTypeId" Type="int" Mode="In" />
+          <Parameter Name="RoomCapacity" Type="int" Mode="In" />
+          <Parameter Name="RoomDescription" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="RoomDeleteByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoomId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RoomViewOrSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SearchText" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="dmaa0220_1083750ModelStoreContainer">
+          <EntitySet Name="booking" EntityType="Self.booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bookingStatus" EntityType="Self.bookingStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rooms" EntityType="Self.rooms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roomTypes" EntityType="Self.roomTypes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="booking_roomId_room_id" Association="Self.booking_roomId_room_id">
+            <End Role="rooms" EntitySet="rooms" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+          <AssociationSet Name="rooms_bookingStatusId_bookingStatus_id" Association="Self.rooms_bookingStatusId_bookingStatus_id">
+            <End Role="bookingStatus" EntitySet="bookingStatus" />
+            <End Role="rooms" EntitySet="rooms" />
+          </AssociationSet>
+          <AssociationSet Name="rooms_roomTypeId_roomTypes_id" Association="Self.rooms_roomTypeId_roomTypes_id">
+            <End Role="roomTypes" EntitySet="roomTypes" />
+            <End Role="rooms" EntitySet="rooms" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dmaa0220_1083750Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HildurDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="RoomAddOrEdit">
+            <Parameter Name="RoomId" Mode="In" Type="Int32" />
+            <Parameter Name="RoomNumber" Mode="In" Type="String" />
+            <Parameter Name="RoomImage" Mode="In" Type="String" />
+            <Parameter Name="RoomPrice" Mode="In" Type="Int32" />
+            <Parameter Name="BookingStatusId" Mode="In" Type="Int32" />
+            <Parameter Name="RoomTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="RoomCapacity" Mode="In" Type="Int32" />
+            <Parameter Name="RoomDescription" Mode="In" Type="String" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="RoomDeleteByID">
+          <Parameter Name="RoomId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RoomViewOrSearch" ReturnType="Collection(dmaa0220_1083750Model.RoomViewOrSearch_Result)">
+          <Parameter Name="SearchText" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="booking" EntityType="dmaa0220_1083750Model.booking" />
+          <EntitySet Name="bookingStatus" EntityType="dmaa0220_1083750Model.bookingStatus" />
+          <EntitySet Name="rooms" EntityType="dmaa0220_1083750Model.rooms" />
+          <EntitySet Name="roomTypes" EntityType="dmaa0220_1083750Model.roomTypes" />
+          <AssociationSet Name="booking_roomId_room_id" Association="dmaa0220_1083750Model.booking_roomId_room_id">
+            <End Role="rooms" EntitySet="rooms" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+          <AssociationSet Name="rooms_bookingStatusId_bookingStatus_id" Association="dmaa0220_1083750Model.rooms_bookingStatusId_bookingStatus_id">
+            <End Role="bookingStatus" EntitySet="bookingStatus" />
+            <End Role="rooms" EntitySet="rooms" />
+          </AssociationSet>
+          <AssociationSet Name="rooms_roomTypeId_roomTypes_id" Association="dmaa0220_1083750Model.rooms_roomTypeId_roomTypes_id">
+            <End Role="roomTypes" EntitySet="roomTypes" />
+            <End Role="rooms" EntitySet="rooms" />
+          </AssociationSet>
+          </EntityContainer>
+        <ComplexType Name="RoomViewOrSearch_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int64" Name="roomNumber" Nullable="false" />
+          <Property Type="String" Name="roomImage" Nullable="false" MaxLength="255" />
+          <Property Type="Int64" Name="roomTypeId" Nullable="false" />
+          <Property Type="Int64" Name="roomPrice" Nullable="false" />
+          <Property Type="Int64" Name="bookingStatusId" Nullable="false" />
+          <Property Type="Int64" Name="roomCapacity" Nullable="false" />
+          <Property Type="String" Name="roomDescription" Nullable="false" MaxLength="255" />
+          <Property Type="Boolean" Name="isActive" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customerName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="customerAddress" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="customerPhone" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="bookingFrom" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="bookingTo" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="noOfMembers" Type="Int32" Nullable="false" />
+          <Property Name="totalAmount" Type="Decimal" Nullable="false" Precision="19" Scale="5" />
+          <Property Name="roomId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="rooms" Relationship="dmaa0220_1083750Model.booking_roomId_room_id" FromRole="booking" ToRole="rooms" />
+        </EntityType>
+        <EntityType Name="bookingStatus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bookingStatus1" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="rooms" Relationship="dmaa0220_1083750Model.rooms_bookingStatusId_bookingStatus_id" FromRole="bookingStatus" ToRole="rooms" />
+        </EntityType>
+        <EntityType Name="rooms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="roomNumber" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="roomImage" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="roomTypeId" Type="Int32" Nullable="false" />
+          <Property Name="roomPrice" Type="Int32" Nullable="false" />
+          <Property Name="bookingStatusId" Type="Int32" Nullable="false" />
+          <Property Name="roomCapacity" Type="Int32" Nullable="false" />
+          <Property Name="roomDescription" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="booking" Relationship="dmaa0220_1083750Model.booking_roomId_room_id" FromRole="rooms" ToRole="booking" />
+          <NavigationProperty Name="bookingStatus" Relationship="dmaa0220_1083750Model.rooms_bookingStatusId_bookingStatus_id" FromRole="rooms" ToRole="bookingStatus" />
+          <NavigationProperty Name="roomTypes" Relationship="dmaa0220_1083750Model.rooms_roomTypeId_roomTypes_id" FromRole="rooms" ToRole="roomTypes" />
+        </EntityType>
+        <EntityType Name="roomTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="roomType" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="rooms" Relationship="dmaa0220_1083750Model.rooms_roomTypeId_roomTypes_id" FromRole="roomTypes" ToRole="rooms" />
+        </EntityType>
+        <Association Name="booking_roomId_room_id">
+          <End Type="dmaa0220_1083750Model.rooms" Role="rooms" Multiplicity="1" />
+          <End Type="dmaa0220_1083750Model.booking" Role="booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rooms">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="roomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rooms_bookingStatusId_bookingStatus_id">
+          <End Type="dmaa0220_1083750Model.bookingStatus" Role="bookingStatus" Multiplicity="1" />
+          <End Type="dmaa0220_1083750Model.rooms" Role="rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bookingStatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rooms">
+              <PropertyRef Name="bookingStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rooms_roomTypeId_roomTypes_id">
+          <End Type="dmaa0220_1083750Model.roomTypes" Role="roomTypes" Multiplicity="1" />
+          <End Type="dmaa0220_1083750Model.rooms" Role="rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roomTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rooms">
+              <PropertyRef Name="roomTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dmaa0220_1083750ModelStoreContainer" CdmEntityContainer="HildurDatabaseEntities">
+          <FunctionImportMapping FunctionImportName="RoomAddOrEdit" FunctionName="dmaa0220_1083750Model.Store.RoomAddOrEdit" />
+          <FunctionImportMapping FunctionImportName="RoomDeleteByID" FunctionName="dmaa0220_1083750Model.Store.RoomDeleteByID" />
+          <FunctionImportMapping FunctionImportName="RoomViewOrSearch" FunctionName="dmaa0220_1083750Model.Store.RoomViewOrSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dmaa0220_1083750Model.RoomViewOrSearch_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="roomNumber" ColumnName="roomNumber" />
+                <ScalarProperty Name="roomImage" ColumnName="roomImage" />
+                <ScalarProperty Name="roomTypeId" ColumnName="roomTypeId" />
+                <ScalarProperty Name="roomPrice" ColumnName="roomPrice" />
+                <ScalarProperty Name="bookingStatusId" ColumnName="bookingStatusId" />
+                <ScalarProperty Name="roomCapacity" ColumnName="roomCapacity" />
+                <ScalarProperty Name="roomDescription" ColumnName="roomDescription" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="booking">
+            <EntityTypeMapping TypeName="dmaa0220_1083750Model.booking">
+              <MappingFragment StoreEntitySet="booking">
+                <ScalarProperty Name="roomId" ColumnName="roomId" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="noOfMembers" ColumnName="noOfMembers" />
+                <ScalarProperty Name="bookingTo" ColumnName="bookingTo" />
+                <ScalarProperty Name="bookingFrom" ColumnName="bookingFrom" />
+                <ScalarProperty Name="customerPhone" ColumnName="customerPhone" />
+                <ScalarProperty Name="customerAddress" ColumnName="customerAddress" />
+                <ScalarProperty Name="customerName" ColumnName="customerName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bookingStatus">
+            <EntityTypeMapping TypeName="dmaa0220_1083750Model.bookingStatus">
+              <MappingFragment StoreEntitySet="bookingStatus">
+                <ScalarProperty Name="bookingStatus1" ColumnName="bookingStatus" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rooms">
+            <EntityTypeMapping TypeName="dmaa0220_1083750Model.rooms">
+              <MappingFragment StoreEntitySet="rooms">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="roomDescription" ColumnName="roomDescription" />
+                <ScalarProperty Name="roomCapacity" ColumnName="roomCapacity" />
+                <ScalarProperty Name="bookingStatusId" ColumnName="bookingStatusId" />
+                <ScalarProperty Name="roomPrice" ColumnName="roomPrice" />
+                <ScalarProperty Name="roomTypeId" ColumnName="roomTypeId" />
+                <ScalarProperty Name="roomImage" ColumnName="roomImage" />
+                <ScalarProperty Name="roomNumber" ColumnName="roomNumber" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roomTypes">
+            <EntityTypeMapping TypeName="dmaa0220_1083750Model.roomTypes">
+              <MappingFragment StoreEntitySet="roomTypes">
+                <ScalarProperty Name="roomType" ColumnName="roomType" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -27,11 +27,11 @@ namespace DataAccess
             return await WithConnection(async conn =>
             {
                 var query = @"SELECT *
-                    FROM Rooms r
-                    JOIN RoomTypes rt on rt.Id = r.RoomTypeId";
-                return await conn.QueryAsync<Room, RoomType, Room>(query, (room, roomType) =>
+                    FROM rooms r
+                    JOIN roomTypes rt on rt.Id = r.roomTypeId";
+                return await conn.QueryAsync<Room, RoomType, Room>(query, (room, RoomType) =>
                 {
-                    room.RoomType = roomType;
+                    room.RoomType = RoomType;
                     return room;
                 }, splitOn: "RoomTypeId");
             });
@@ -42,12 +42,13 @@ namespace DataAccess
             return await WithConnection(async conn =>
             {
                 var query = @"SELECT TOP 1 *
-                    FROM Rooms r
-                    JOIN RoomTypes rt on rt.Id = r.RoomTypeId
-                    WHERE r.Id = @Id";
-                var result = await conn.QueryAsync<Room, RoomType, Room>(query, (room, roomType) =>
+                    FROM rooms r
+                    JOIN roomTypes rt on rt.id = r.roomTypeId
+                    JOIN bookingStatus bs on bs.id = r.bookingStatusId
+                    WHERE r.id = @Id";
+                var result = await conn.QueryAsync<Room, RoomType, Room>(query, (room, RoomType) =>
                 {
-                    room.RoomType = roomType;
+                    room.RoomType = RoomType;
                     return room;
                 }, new
                 {
@@ -62,9 +63,10 @@ namespace DataAccess
             await WithConnection(async conn =>
             {
                 var query = @"
-                    Insert Into Rooms(NumberOfBeds, Price, RoomTypeId)
-                    VALUES (@NumberOfBeds, @Price, @RoomTypeId);
+                    Insert Into Rooms(roomNumber, roomImage, roomPrice, bookingStatusId, roomTypeId, roomCapacity, roomDescription, isActive)
+                    VALUES (@RoomNumber, @RoomImage, @RoomPrice, @BookingStatusId, @RoomTypeId, @RoomCapacity, @RoomDescription, @IsActive);
                     SELECT CAST(SCOPE_IDENTITY() as int)";
+
                 var id = await conn.QuerySingleOrDefaultAsync<int>(query, new
                 {
                     RoomNumber = room.RoomNumber,
@@ -100,10 +102,15 @@ namespace DataAccess
             {
                 var query = @"
                     UPDATE Rooms
-                    SET NumberOfBeds = @NumberOfBeds,
-                        Price = @Price,
-                        RoomTypeId = @RoomTypeId
-                    WHERE Id = @Id";
+                    SET roomNumber = @RoomNumber,
+                        roomImage = @RoomImage,
+                        roomPrice = @RoomPrice,
+                        bookingStatusId = @BookingStatusId,
+                        roomTypeId = @RoomTypeId,
+                        roomCapacity = @RoomCapacity,
+                        roomDescription = @RoomDescription,
+                        isActive = @IsActive
+                    WHERE id = @Id";
                 var updatedRows = await conn.ExecuteAsync(query, new
                 {
                     Id = room.RoomId,

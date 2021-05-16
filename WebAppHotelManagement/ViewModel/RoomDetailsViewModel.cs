@@ -7,14 +7,15 @@ namespace WebAppHotelManagement.ViewModel
 {
     public class RoomDetailsViewModel
     {
-        public int RoomId { get; set; }
-        public string RoomNumber { get; set; }
-        public string RoomImage { get; set; }
-        public decimal RoomPrice { get; set; }
-        public string BookingStatus { get; set; }
-        public string RoomType { get; set; }
-        public int RoomCapacity { get; set; }
-        public string RoomDescription { get; set; }
+        public int id { get; set; }
+        public string roomNumber { get; set; }
+        public string roomImage { get; set; }
+        public decimal roomPrice { get; set; }
+        public string bookingStatus { get; set; }
+        public string roomType { get; set; }
+        public int roomCapacity { get; set; }
+        public string roomDescription { get; set; }
+ 
 
 
     }

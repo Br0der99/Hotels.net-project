@@ -134,8 +134,26 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BookingStatus.cs">
-      <DependentUpon>HotelDBModel.tt</DependentUpon>
+    <Compile Include="Models\booking.cs">
+      <DependentUpon>HildurModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\bookingStatus.cs">
+      <DependentUpon>HildurModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HildurModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HildurModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HildurModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HildurModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HildurModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HildurModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\HotelDBModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -161,11 +179,14 @@
     <Compile Include="Models\RoomBookings.cs">
       <DependentUpon>HotelDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Rooms.cs">
-      <DependentUpon>HotelDBModel.tt</DependentUpon>
+    <Compile Include="Models\rooms.cs">
+      <DependentUpon>HildurModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RoomTypes.cs">
-      <DependentUpon>HotelDBModel.tt</DependentUpon>
+    <Compile Include="Models\roomTypes.cs">
+      <DependentUpon>HildurModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RoomViewOrSearch_Result.cs">
+      <DependentUpon>HildurModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>HotelDBModel.tt</DependentUpon>
@@ -227,6 +248,16 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\hotel-presidente-4s.jpg" />
+    <Content Include="Models\HildurModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HildurModel.edmx</DependentUpon>
+      <LastGenOutput>HildurModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\HildurModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HildurModel.edmx</DependentUpon>
+      <LastGenOutput>HildurModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\HotelDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>HotelDBModel.Context.cs</LastGenOutput>
@@ -245,6 +276,13 @@
     </EntityDeploy>
     <Content Include="Models\HotelDBModel.edmx.diagram">
       <DependentUpon>HotelDBModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\HildurModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HildurModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\HildurModel.edmx.diagram">
+      <DependentUpon>HildurModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -281,6 +319,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="RoomImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

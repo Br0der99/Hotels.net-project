@@ -10,21 +10,21 @@ namespace WebAppHotelManagement.Controllers
 {
     public class BookingController : Controller
     {
-        private HotelDBEntities objHotelDBEntities;
+        private HildurDatabaseEntities objHotelDBEntities;
         public BookingController()
         {
-            objHotelDBEntities = new HotelDBEntities();
+            objHotelDBEntities = new HildurDatabaseEntities();
         }
 
         public ActionResult Index()
         {
             BookingViewModel objBookingViewModel = new BookingViewModel();
-            objBookingViewModel.ListOfRoom = (from objRoom in objHotelDBEntities.Rooms
-                                              where objRoom.BookingStatusId == 2
+            objBookingViewModel.ListOfRoom = (from objRoom in objHotelDBEntities.rooms
+                                              where objRoom.bookingStatusId == 2
                                               select new SelectListItem()
                                               {
-                                                  Text = objRoom.RoomNumber,
-                                                  Value = objRoom.RoomId.ToString()
+                                                  Text = objRoom.roomNumber,
+                                                  Value = objRoom.id.ToString()
                                               }
                                               ).ToList();
             objBookingViewModel.BookingFrom = DateTime.Now;
@@ -36,27 +36,27 @@ namespace WebAppHotelManagement.Controllers
         public ActionResult Index(BookingViewModel objBookingViewModel)
         {
             int numberOfDays = Convert.ToInt32((objBookingViewModel.BookingTo - objBookingViewModel.BookingFrom).TotalDays);
-            Rooms objRoom = objHotelDBEntities.Rooms.Single(model => model.RoomId == objBookingViewModel.AssignRoomId);
-            decimal RoomPrice = objRoom.RoomPrice;
+            rooms objRoom = objHotelDBEntities.rooms.Single(model => model.id == objBookingViewModel.AssignRoomId);
+            decimal RoomPrice = objRoom.roomPrice;
             decimal TotalAmount = RoomPrice * numberOfDays;
 
             string dt = objBookingViewModel.BookingTo.ToString(format: "MM/dd/yyyy");
-            RoomBookings roomBookings = new RoomBookings()
+            booking roomBookings = new booking()
             {
                 //  BookingId = objBookingViewModel.BookingId,
-                AssignRoomId = objBookingViewModel.AssignRoomId,
-                CustomerName = objBookingViewModel.CustomerName,
-                CustomerAddress = objBookingViewModel.CustomerAddress,
-                CustomerPhone = objBookingViewModel.CustomerPhone,
-                BookingFrom = objBookingViewModel.BookingFrom,
-                BookingTo = objBookingViewModel.BookingTo,
-                NoOfMembers = objBookingViewModel.NumberOfMembers,
-                TotalAmount = TotalAmount
+                roomId = objBookingViewModel.AssignRoomId,
+                customerName = objBookingViewModel.CustomerName,
+                customerAddress = objBookingViewModel.CustomerAddress,
+                customerPhone = objBookingViewModel.CustomerPhone,
+                bookingFrom = objBookingViewModel.BookingFrom,
+                bookingTo = objBookingViewModel.BookingTo,
+                noOfMembers = objBookingViewModel.NumberOfMembers,
+                totalAmount = TotalAmount
             };
-            objHotelDBEntities.RoomBookings.Add(roomBookings);
+            objHotelDBEntities.booking.Add(roomBookings);
             objHotelDBEntities.SaveChanges();
 
-            objRoom.BookingStatusId = 3;
+            objRoom.bookingStatusId = 3;
             objHotelDBEntities.SaveChanges();
 
             return Json(new { message = "Hotel Booking is Successfully Created.", success = true }, JsonRequestBehavior.AllowGet);
@@ -66,21 +66,21 @@ namespace WebAppHotelManagement.Controllers
         public PartialViewResult GetAllBookingHistory()
         {
             List<RoomBookingViewModel> listOfBookingViewModels = new List<RoomBookingViewModel>();
-            listOfBookingViewModels = (from objHotelBooking in objHotelDBEntities.RoomBookings
-                                       join objRoom in objHotelDBEntities.Rooms on objHotelBooking.AssignRoomId equals objRoom.RoomId
+            listOfBookingViewModels = (from objHotelBooking in objHotelDBEntities.booking
+                                       join objRoom in objHotelDBEntities.rooms on objHotelBooking.roomId equals objRoom.id
                                        select new RoomBookingViewModel()
                                        {
-                                           BookingFrom = objHotelBooking.BookingFrom,
-                                           BookingTo = objHotelBooking.BookingTo,
-                                           CustomerPhone = objHotelBooking.CustomerPhone,
-                                           CustomerName = objHotelBooking.CustomerName,
-                                           TotalAmount = objHotelBooking.TotalAmount,
-                                           CustomerAddress = objHotelBooking.CustomerAddress,
-                                           NumberOfMembers = objHotelBooking.NoOfMembers,
-                                           BookingId = objHotelBooking.BookingId,
-                                           RoomNumber = objRoom.RoomNumber,
-                                           RoomPrice = objRoom.RoomPrice,
-                                           NumberOfDays = System.Data.Entity.DbFunctions.DiffDays(objHotelBooking.BookingFrom, objHotelBooking.BookingTo).Value
+                                           BookingFrom = objHotelBooking.bookingFrom,
+                                           BookingTo = objHotelBooking.bookingTo,
+                                           CustomerPhone = objHotelBooking.customerPhone,
+                                           CustomerName = objHotelBooking.customerName,
+                                           TotalAmount = objHotelBooking.totalAmount,
+                                           CustomerAddress = objHotelBooking.customerAddress,
+                                           NumberOfMembers = objHotelBooking.noOfMembers,
+                                           BookingId = objHotelBooking.id,
+                                           RoomNumber = objRoom.roomNumber,
+                                           RoomPrice = objRoom.roomPrice,
+                                           NumberOfDays = System.Data.Entity.DbFunctions.DiffDays(objHotelBooking.bookingFrom, objHotelBooking.bookingTo).Value
 
                                        }).ToList();
             return PartialView("_BookingHistoryPartial", listOfBookingViewModels);

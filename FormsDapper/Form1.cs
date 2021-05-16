@@ -14,7 +14,7 @@ namespace WindowsFormsApp
 {
     public partial class Form1 : Form                                               //Lav Catalog til HotelDB
     {
-        SqlConnection con = new SqlConnection(@"Data Source = .; Initial Catalog = HotelDB; Integrated Security = True");
+        SqlConnection con = new SqlConnection("Server = hildur.ucn.dk; Database=dmaa0220_1083750;User Id = dmaa0220_1083750; Password=Password1!;Trusted_Connection=False;");
     //    int empId = 0;
         int roomId = 0;
 
