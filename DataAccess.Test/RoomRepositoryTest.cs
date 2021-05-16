@@ -67,8 +67,8 @@ namespace DataAccess.Test
             //Arrange
             _room = new Room()
             {
-                NumberOfBeds = 2,
-                Price = 4000,
+                RoomCapacity = 2,
+                RoomPrice = 4000,
                 RoomType = new RoomType()
                 {
                     Id = 1,
@@ -80,7 +80,7 @@ namespace DataAccess.Test
             await _repository.AddRoom(_room);
 
             //Assert
-            Assert.AreNotEqual(0, _room.Id);
+            Assert.AreNotEqual(0, _room.RoomId);
         }
 
         [Test]
@@ -88,7 +88,7 @@ namespace DataAccess.Test
         public async Task DeleteRoomTest()
         {
             //Arrange
-            var roomId = _room.Id;
+            var roomId = _room.RoomId;
             
             //Act
             var result = await _repository.DeleteRoom(roomId);
@@ -117,9 +117,9 @@ namespace DataAccess.Test
             //Arrange
             var room = new Room()
             {
-                Id = 4,
-                NumberOfBeds = 2,
-                Price = 4500,
+                RoomId = 4,
+                RoomCapacity = 2,
+                RoomPrice = 4500,
                 RoomType = new RoomType()
                 {
                     Id = 1,
@@ -140,9 +140,9 @@ namespace DataAccess.Test
             //Arrange
             var room = new Room()
             {
-                Id = 99999,
-                NumberOfBeds = 2,
-                Price = 4500,
+                RoomId = 99999,
+                RoomCapacity = 2,
+                RoomPrice = 4500,
                 RoomType = new RoomType()
                 {
                     Id = 1,

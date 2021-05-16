@@ -2,10 +2,14 @@
 {
     public class Room
     {
-        public int Id { get; set; }
-        public int NumberOfBeds { get; set; }
-        public int Price { get; set; }
+        public int RoomId { get; set; }
+        public string RoomNumber { get; set; }
+        public string RoomImage { get; set; }
+        public decimal RoomPrice { get; set; }
+        public string BookingStatus { get; set; }
         public RoomType RoomType { get; set; }
-        
+        public int RoomCapacity { get; set; }
+        public string RoomDescription { get; set; }
+
     }
 }

@@ -67,11 +67,17 @@ namespace DataAccess
                     SELECT CAST(SCOPE_IDENTITY() as int)";
                 var id = await conn.QuerySingleOrDefaultAsync<int>(query, new
                 {
-                    NumberOfBeds = room.NumberOfBeds,
-                    Price = room.Price,
-                    RoomTypeId = room.RoomType.Id
+                    RoomNumber = room.RoomNumber,
+                    RoomImage = room.RoomImage,
+                    RoomPrice = room.RoomPrice,
+                    BookingStatusId = room.BookingStatus,
+                    RoomTypeId = room.RoomType,
+                    RoomCapacity = room.RoomCapacity,
+                    RoomDescription = room.RoomDescription,
+                    IsActive = true
+
                 });
-                room.Id = id;
+                room.RoomId = id;
             });
         }
 
@@ -100,10 +106,15 @@ namespace DataAccess
                     WHERE Id = @Id";
                 var updatedRows = await conn.ExecuteAsync(query, new
                 {
-                    Id = room.Id,
-                    NumberOfBeds = room.NumberOfBeds,
-                    Price = room.Price,
-                    RoomTypeId = room.RoomType.Id
+                    Id = room.RoomId,
+                    RoomNumber = room.RoomNumber,
+                    RoomImage = room.RoomImage,
+                    RoomPrice = room.RoomPrice,
+                    BookingStatusId = room.BookingStatus,
+                    RoomTypeId = room.RoomType,
+                    RoomCapacity = room.RoomCapacity,
+                    RoomDescription = room.RoomDescription,
+                    IsActive = true
                 });
                 return updatedRows > 0;
             });
