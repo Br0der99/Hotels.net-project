@@ -315,7 +315,7 @@
     <Content Include="Views\Booking\Index.cshtml" />
     <Content Include="Views\Home\Service.cshtml" />
     <Content Include="Views\Shared\_BookingHistoryPartial.cshtml" />
-    <Content Include="Views\Shared\_RoomsDetailsPartial.cshtml" />
+    <Content Include="Views\Shared\_RoomDetailsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
