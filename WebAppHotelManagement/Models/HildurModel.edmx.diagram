@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="dmaa0220_1083750Model.booking" Width="1.5" PointX="5.25" PointY="1.125" />
         <EntityTypeShape EntityType="dmaa0220_1083750Model.bookingStatus" Width="1.5" PointX="0.75" PointY="1.875" />
         <EntityTypeShape EntityType="dmaa0220_1083750Model.rooms" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="dmaa0220_1083750Model.roomTypes" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="dmaa0220_1083750Model.roomTypes" Width="1.5" PointX="1" PointY="4" />
         <AssociationConnector Association="dmaa0220_1083750Model.booking_roomId_room_id" />
         <AssociationConnector Association="dmaa0220_1083750Model.rooms_bookingStatusId_bookingStatus_id" />
         <AssociationConnector Association="dmaa0220_1083750Model.rooms_roomTypeId_roomTypes_id" />
