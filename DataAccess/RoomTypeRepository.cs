@@ -34,14 +34,14 @@ namespace DataAccess
             await WithConnection(async conn =>
             {
                 var query = @"
-                    Insert Into roomTypes(roomType)
+                    Insert Into roomTypes(roomTypeName)
                     VALUES (@RoomTypes);
                     SELECT CAST(SCOPE_IDENTITY() as int)";
                 var id = await conn.QuerySingleOrDefaultAsync<int>(query, new
                 {
-                    RoomTypes = roomType.RoomTypes
+                    RoomTypes = roomType.RoomTypeName
                 });
-                roomType.Id = id;
+                roomType.RoomTypeId = id;
             });
         }
 
@@ -49,7 +49,7 @@ namespace DataAccess
         {
             return await WithConnection(async conn =>
             {
-                var query = "DELETE FROM RoomTypes WHERE id = @Id";
+                var query = "DELETE FROM RoomTypes WHERE roomTypeId = @Id";
                 var deletedRows = await conn.ExecuteAsync(query, new
                 {
                     Id = id

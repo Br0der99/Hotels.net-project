@@ -26,14 +26,17 @@ namespace DataAccess
         {
             return await WithConnection(async conn =>
             {
-                var query = @"SELECT *
+                var query = @"SELECT *, bs.bookingStatus AS BookingStatusName
                     FROM rooms r
-                    JOIN roomTypes rt on rt.Id = r.roomTypeId";
-                return await conn.QueryAsync<Room, RoomType, Room>(query, (room, RoomType) =>
-                {
-                    room.RoomType = RoomType;
-                    return room;
-                }, splitOn: "RoomTypeId");
+                    JOIN roomTypes rt on rt.roomTypeId = r.roomTypeId
+                    JOIN bookingStatus bs on bs.bookingStatusId = r.bookingStatusId";
+                return await conn.QueryAsync<Room, RoomType, BookingStatus, Room>(query, 
+                    (room, roomType, bookingStatus) =>
+                    {
+                        room.BookingStatus = bookingStatus;
+                        room.RoomType = roomType;
+                        return room;
+                    }, splitOn: "RoomTypeId,bookingStatusId");
             });
         }
 
@@ -41,19 +44,21 @@ namespace DataAccess
         {
             return await WithConnection(async conn =>
             {
-                var query = @"SELECT TOP 1 *
+                var query = @"SELECT TOP 1 *, bs.bookingStatus AS BookingStatusName
                     FROM rooms r
-                    JOIN roomTypes rt on rt.id = r.roomTypeId
-                    JOIN bookingStatus bs on bs.id = r.bookingStatusId
-                    WHERE r.id = @Id";
-                var result = await conn.QueryAsync<Room, RoomType, Room>(query, (room, RoomType) =>
-                {
-                    room.RoomType = RoomType;
-                    return room;
-                }, new
-                {
-                    Id = id
-                }, splitOn: "RoomTypeId");
+                    JOIN roomTypes rt on rt.roomTypeId = r.roomTypeId
+                    JOIN bookingStatus bs on bs.bookingStatusId = r.bookingStatusId
+                    WHERE r.roomId = @Id";
+                var result = await conn.QueryAsync<Room, RoomType, BookingStatus, Room>(query, 
+                (room, roomType, bookingStatus) =>
+                    {
+                        room.BookingStatus = bookingStatus;
+                        room.RoomType = roomType;
+                        return room;
+                    }, new
+                    {
+                        Id = id
+                    }, splitOn: "RoomTypeId,bookingStatusId");
                 return result.FirstOrDefault();
             });
         }
@@ -72,8 +77,8 @@ namespace DataAccess
                     RoomNumber = room.RoomNumber,
                     RoomImage = room.RoomImage,
                     RoomPrice = room.RoomPrice,
-                    BookingStatusId = room.BookingStatus,
-                    RoomTypeId = room.RoomType,
+                    BookingStatusId = room.BookingStatus.BookingStatusId,
+                    RoomTypeId = room.RoomType.RoomTypeId,
                     RoomCapacity = room.RoomCapacity,
                     RoomDescription = room.RoomDescription,
                     IsActive = true
@@ -87,7 +92,7 @@ namespace DataAccess
         {
             return await WithConnection(async conn =>
             {
-                var query = "DELETE FROM Rooms WHERE Id = @Id";
+                var query = "DELETE FROM Rooms WHERE roomId = @Id";
                 var deletedRows = await conn.ExecuteAsync(query, new
                 {
                     Id = id
@@ -110,7 +115,7 @@ namespace DataAccess
                         roomCapacity = @RoomCapacity,
                         roomDescription = @RoomDescription,
                         isActive = @IsActive
-                    WHERE id = @Id";
+                    WHERE roomId = @Id";
                 var updatedRows = await conn.ExecuteAsync(query, new
                 {
                     Id = room.RoomId,

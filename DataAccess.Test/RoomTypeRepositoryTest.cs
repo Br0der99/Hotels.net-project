@@ -37,14 +37,14 @@ namespace DataAccess.Test
             //Arrange
             _roomType = new RoomType()
             {
-                RoomTypes = "SingleBed"
+                RoomTypeName = "SingleBed"
             };
 
             //Act
             await _repository.AddRoomType(_roomType);
 
             //Assert
-            Assert.AreNotEqual(0, _roomType.Id);
+            Assert.AreNotEqual(0, _roomType.RoomTypeId);
         }
         
         [Test]
@@ -52,7 +52,7 @@ namespace DataAccess.Test
         public async Task DeleteRoomTypeTest()
         {
             //Arrange
-            var roomTypeId = _roomType.Id;
+            var roomTypeId = _roomType.RoomTypeId;
             
             //Act
             var result = await _repository.DeleteRoomType(roomTypeId);

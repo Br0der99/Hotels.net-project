@@ -69,10 +69,16 @@ namespace DataAccess.Test
             {
                 RoomCapacity = 2,
                 RoomPrice = 4000,
+                RoomNumber = "200",
+                BookingStatus = new BookingStatus()
+                {
+                    BookingStatusId = 1,
+                    BookingStatusName = "Reserved"
+                },
                 RoomType = new RoomType()
                 {
-                    Id = 1,
-                    RoomTypes = "Suite"
+                    RoomTypeId = 1,
+                    RoomTypeName = "Suite"
                 }
             };
 
@@ -122,8 +128,8 @@ namespace DataAccess.Test
                 RoomPrice = 4500,
                 RoomType = new RoomType()
                 {
-                    Id = 1,
-                    RoomTypes = "Suite"
+                    RoomTypeId = 1,
+                    RoomTypeName = "Suite"
                 }
             };
             
@@ -145,8 +151,8 @@ namespace DataAccess.Test
                 RoomPrice = 4500,
                 RoomType = new RoomType()
                 {
-                    Id = 1,
-                    RoomTypes = "Suite"
+                    RoomTypeId = 1,
+                    RoomTypeName = "Suite"
                 }
             };
             

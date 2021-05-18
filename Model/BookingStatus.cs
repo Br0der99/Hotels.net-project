@@ -6,7 +6,7 @@ namespace Model
 {
    public class BookingStatus
     {
-        public int Id { get; set; }
+        public int BookingStatusId { get; set; }
         public string BookingStatusName { get; set; }
     }
 }
