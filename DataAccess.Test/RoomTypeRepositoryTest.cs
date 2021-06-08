@@ -14,6 +14,7 @@ namespace DataAccess.Test
         [SetUp]
         public void SetUp()
         {
+            // repository with a new instance of Config
             _repository = new RoomTypeRepository(Config.Instance);
         }
 

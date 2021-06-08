@@ -31,13 +31,18 @@ namespace HotelService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // adds a transient service to services
+            // with the type of <T>
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IRoomRepository, RoomRepository>();
             services.AddTransient<IRoomTypeRepository, RoomTypeRepository>();
             
+            // adds a scoped service to services
+            // with the type of <T>
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRoomService, RoomService>();
             
+            // adds fluentMigrator to services
             services.AddFluentMigratorCore()
                 .ConfigureRunner(rb => rb
                     // Add SQLite support to FluentMigrator
@@ -67,7 +72,8 @@ namespace HotelService
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HotelService v1"));
             }
-
+            
+            // redirects http to https
             app.UseHttpsRedirection();
 
             app.UseRouting();

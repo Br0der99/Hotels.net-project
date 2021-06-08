@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="Microsoft SQL Server - dmaa0220_1083750@Hildur.ucn.dk">
-  <database-model serializer="dbm" dbms="MSSQL" family-id="MSSQL" format-version="4.20">
+  <database-model serializer="dbm" dbms="MSSQL" family-id="MSSQL" format-version="4.21">
     <root id="1">
       <ServerVersion>15.0.2080</ServerVersion>
       <PermissionsCheckSum>9477370187</PermissionsCheckSum>
-      <Grants>0|root||1|connect sql|G
-0|root||2|view any database|G
-0|root||400|connect sql|G
+      <Grants>-9223372036854775808|||-9223372036854775808||G
 2|||2|connect|G
 3|||2|connect|G
 4|||2|connect|G
 5|||2|connect|G
-</Grants>
+0|root||1|connect sql|G
+0|root||400|connect sql|G
+0|root||2|view any database|G</Grants>
     </root>
     <database id="2" parent="1" name="Covid-19_Stats">
       <ObjectId>123</ObjectId>
@@ -76,12 +76,12 @@
     <database id="17" parent="1" name="dmaa0220_1083750">
       <ObjectId>63</ObjectId>
       <PermissionsCheckSum>5314273712</PermissionsCheckSum>
-      <Grants>63|database||0|view any column encryption key definition|G
-63|database||0|view any column master key definition|G
+      <Grants>-9223372036854775808|||-9223372036854775808||G
 63|database||1|connect|G
 63|database||5|connect|G
 63|database||6|connect|G
-</Grants>
+63|database||0|view any column encryption key definition|G
+63|database||0|view any column master key definition|G</Grants>
       <Current>1</Current>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
       <Fingerprint>63.44105/AB5FE005-4BE5-49BA-A16B-961789823E3F@it-sql02-dmzskn</Fingerprint>
@@ -1197,7 +1197,7 @@
     </schema>
     <schema id="295" parent="17" name="dbo">
       <ObjectId>1</ObjectId>
-      <IntrospectionTimestamp>2021-05-13.13:57:30.793</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2021-05-19.10:45:26.503</IntrospectionTimestamp>
       <Current>1</Current>
     </schema>
     <schema id="296" parent="17" name="guest">
@@ -1295,273 +1295,698 @@
       <AuthType>none</AuthType>
     </role>
     <table id="314" parent="295" name="VersionInfo">
-      <ObjectId>776350526</ObjectId>
-      <CreatedTimestamp>2021-05-13.13:57:16.493</CreatedTimestamp>
-      <ModifiedTimestamp>2021-05-13.13:57:16.903</ModifiedTimestamp>
+      <ObjectId>596873889</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:57.033</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:57.507</ModifiedTimestamp>
     </table>
     <table id="315" parent="295" name="address">
-      <ObjectId>952351153</ObjectId>
-      <CreatedTimestamp>2021-05-13.13:57:17.677</CreatedTimestamp>
-      <ModifiedTimestamp>2021-05-13.13:57:17.847</ModifiedTimestamp>
+      <ObjectId>772874516</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:58.290</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:58.473</ModifiedTimestamp>
     </table>
-    <table id="316" parent="295" name="city">
-      <ObjectId>792350583</ObjectId>
-      <CreatedTimestamp>2021-05-13.13:57:17.150</CreatedTimestamp>
-      <ModifiedTimestamp>2021-05-13.13:57:17.370</ModifiedTimestamp>
+    <table id="316" parent="295" name="booking">
+      <ObjectId>996875314</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:59.220</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:59.770</ModifiedTimestamp>
     </table>
-    <table id="317" parent="295" name="cityZipcode">
-      <ObjectId>824350697</ObjectId>
-      <CreatedTimestamp>2021-05-13.13:57:17.237</CreatedTimestamp>
-      <ModifiedTimestamp>2021-05-13.13:57:17.847</ModifiedTimestamp>
+    <table id="317" parent="295" name="bookingStatus">
+      <ObjectId>964875200</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:59.040</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-19.09:48:10.457</ModifiedTimestamp>
     </table>
-    <table id="318" parent="295" name="street">
-      <ObjectId>872350868</ObjectId>
-      <CreatedTimestamp>2021-05-13.13:57:17.413</CreatedTimestamp>
-      <ModifiedTimestamp>2021-05-13.13:57:17.637</ModifiedTimestamp>
+    <table id="318" parent="295" name="city">
+      <ObjectId>612873946</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:57.750</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:57.977</ModifiedTimestamp>
     </table>
-    <table id="319" parent="295" name="streetNumber">
-      <ObjectId>904350982</ObjectId>
-      <CreatedTimestamp>2021-05-13.13:57:17.510</CreatedTimestamp>
-      <ModifiedTimestamp>2021-05-13.13:57:17.803</ModifiedTimestamp>
+    <table id="319" parent="295" name="cityZipcode">
+      <ObjectId>644874060</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:57.840</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:58.473</ModifiedTimestamp>
     </table>
-    <column id="320" parent="314" name="Version">
+    <table id="320" parent="295" name="customer">
+      <ObjectId>868874858</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:58.717</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:58.763</ModifiedTimestamp>
+    </table>
+    <table id="321" parent="295" name="employee">
+      <ObjectId>916875029</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:58.813</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:58.860</ModifiedTimestamp>
+    </table>
+    <table id="322" parent="295" name="person">
+      <ObjectId>836874744</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:58.673</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:58.863</ModifiedTimestamp>
+    </table>
+    <table id="323" parent="295" name="roomTypes">
+      <ObjectId>1028875428</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:59.403</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-19.09:48:39.533</ModifiedTimestamp>
+    </table>
+    <table id="324" parent="295" name="rooms">
+      <ObjectId>1060875542</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:59.633</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-19.09:50:07.410</ModifiedTimestamp>
+    </table>
+    <table id="325" parent="295" name="street">
+      <ObjectId>692874231</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:58.020</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:58.243</ModifiedTimestamp>
+    </table>
+    <table id="326" parent="295" name="streetNumber">
+      <ObjectId>724874345</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:58.107</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:58.433</ModifiedTimestamp>
+    </table>
+    <routine id="327" parent="295" name="RoomAddOrEdit">
+      <ObjectId>1188875998</ObjectId>
+      <SourceTextLength>1339</SourceTextLength>
+      <CreatedTimestamp>2021-05-19.10:44:46.497</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-19.10:44:46.497</ModifiedTimestamp>
+      <RoutineType>proc</RoutineType>
+    </routine>
+    <routine id="328" parent="295" name="RoomDeleteByID">
+      <ObjectId>1204876055</ObjectId>
+      <SourceTextLength>142</SourceTextLength>
+      <CreatedTimestamp>2021-05-19.10:45:13.447</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-19.10:45:13.447</ModifiedTimestamp>
+      <RoutineType>proc</RoutineType>
+    </routine>
+    <routine id="329" parent="295" name="RoomViewOrSearch">
+      <ObjectId>1220876112</ObjectId>
+      <SourceTextLength>234</SourceTextLength>
+      <CreatedTimestamp>2021-05-19.10:45:25.383</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-19.10:45:25.383</ModifiedTimestamp>
+      <RoutineType>proc</RoutineType>
+    </routine>
+    <column id="330" parent="314" name="Version">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="321" parent="314" name="AppliedOn">
+    <column id="331" parent="314" name="AppliedOn">
       <Position>2</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="322" parent="314" name="Description">
+    <column id="332" parent="314" name="Description">
       <Position>3</Position>
       <DataType>nvarchar(1024 char)|0s</DataType>
     </column>
-    <index id="323" parent="314" name="UC_Version">
+    <index id="333" parent="314" name="UC_Version">
       <Position>1</Position>
       <ColNames>Version</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <column id="324" parent="315" name="id">
+    <column id="334" parent="315" name="id">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
-      <DataType>bigint|0s</DataType>
+      <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="325" parent="315" name="streetNumberId">
+    <column id="335" parent="315" name="streetNumberId">
       <Position>2</Position>
-      <DataType>bigint|0s</DataType>
+      <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="326" parent="315" name="cityZipId">
-      <Position>3</Position>
-      <DataType>bigint|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="327" parent="315" name="PK_address">
-      <Position>1</Position>
-      <ColNames>id</ColNames>
-      <Clustering>1</Clustering>
-      <Unique>1</Unique>
-    </index>
-    <index id="328" parent="315" name="IX_address_streetNumberId">
-      <Position>2</Position>
-      <ColNames>streetNumberId</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <index id="329" parent="315" name="IX_address_cityZipId">
-      <Position>3</Position>
-      <ColNames>cityZipId</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="330" parent="315" name="PK_address">
-      <ObjectId>968351210</ObjectId>
-      <CreatedTimestamp>2021-05-13.13:57:17.680</CreatedTimestamp>
-      <ModifiedTimestamp>2021-05-13.13:57:17.680</ModifiedTimestamp>
-      <ColNames>id</ColNames>
-      <UnderlyingIndexName>PK_address</UnderlyingIndexName>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="331" parent="315" name="address_streetNumberId_streetNumber">
-      <ObjectId>984351267</ObjectId>
-      <CreatedTimestamp>2021-05-13.13:57:17.803</CreatedTimestamp>
-      <ModifiedTimestamp>2021-05-13.13:57:17.803</ModifiedTimestamp>
-      <ColNames>streetNumberId</ColNames>
-      <RefTableId>904350982</RefTableId>
-      <RefTableName>streetNumber</RefTableName>
-      <RefKeyName>PK_streetNumber</RefKeyName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="332" parent="315" name="address_cityZipId_cityZipcode_id">
-      <ObjectId>1000351324</ObjectId>
-      <CreatedTimestamp>2021-05-13.13:57:17.847</CreatedTimestamp>
-      <ModifiedTimestamp>2021-05-13.13:57:17.847</ModifiedTimestamp>
-      <ColNames>cityZipId</ColNames>
-      <RefTableId>824350697</RefTableId>
-      <RefTableName>cityZipcode</RefTableName>
-      <RefKeyName>PK_cityZipcode</RefKeyName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="333" parent="316" name="id">
-      <Position>1</Position>
-      <SequenceIdentity>1</SequenceIdentity>
-      <DataType>bigint|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="334" parent="316" name="name">
-      <Position>2</Position>
-      <DataType>nvarchar(255 char)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="335" parent="316" name="PK_city">
-      <Position>1</Position>
-      <ColNames>id</ColNames>
-      <Clustering>1</Clustering>
-      <Unique>1</Unique>
-    </index>
-    <index id="336" parent="316" name="IX_city_name">
-      <Position>2</Position>
-      <ColNames>name</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="337" parent="316" name="PK_city">
-      <ObjectId>808350640</ObjectId>
-      <CreatedTimestamp>2021-05-13.13:57:17.150</CreatedTimestamp>
-      <ModifiedTimestamp>2021-05-13.13:57:17.150</ModifiedTimestamp>
-      <ColNames>id</ColNames>
-      <UnderlyingIndexName>PK_city</UnderlyingIndexName>
-      <Primary>1</Primary>
-    </key>
-    <column id="338" parent="317" name="id">
-      <Position>1</Position>
-      <SequenceIdentity>1</SequenceIdentity>
-      <DataType>bigint|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="339" parent="317" name="cityId">
-      <Position>2</Position>
-      <DataType>bigint|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="340" parent="317" name="zipCode">
+    <column id="336" parent="315" name="cityZipId">
       <Position>3</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="341" parent="317" name="PK_cityZipcode">
+    <index id="337" parent="315" name="PK_address">
       <Position>1</Position>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <index id="342" parent="317" name="IX_cityZipcode_cityId">
+    <index id="338" parent="315" name="IX_address_streetNumberId">
       <Position>2</Position>
-      <ColNames>cityId</ColNames>
+      <ColNames>streetNumberId</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="343" parent="317" name="IX_cityZipcode_zipCode">
+    <index id="339" parent="315" name="IX_address_cityZipId">
       <Position>3</Position>
-      <ColNames>zipCode</ColNames>
+      <ColNames>cityZipId</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="344" parent="317" name="PK_cityZipcode">
-      <ObjectId>840350754</ObjectId>
-      <CreatedTimestamp>2021-05-13.13:57:17.237</CreatedTimestamp>
-      <ModifiedTimestamp>2021-05-13.13:57:17.237</ModifiedTimestamp>
+    <key id="340" parent="315" name="PK_address">
+      <ObjectId>788874573</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:58.293</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:58.293</ModifiedTimestamp>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>PK_cityZipcode</UnderlyingIndexName>
+      <UnderlyingIndexName>PK_address</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="345" parent="317" name="cityZipcode_cityId_city_id">
-      <ObjectId>856350811</ObjectId>
-      <CreatedTimestamp>2021-05-13.13:57:17.370</CreatedTimestamp>
-      <ModifiedTimestamp>2021-05-13.13:57:17.370</ModifiedTimestamp>
-      <ColNames>cityId</ColNames>
-      <RefTableId>792350583</RefTableId>
-      <RefTableName>city</RefTableName>
-      <RefKeyName>PK_city</RefKeyName>
+    <foreign-key id="341" parent="315" name="address_streetNumberId_streetNumber">
+      <ObjectId>804874630</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:58.430</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:58.430</ModifiedTimestamp>
+      <ColNames>streetNumberId</ColNames>
+      <RefTableId>724874345</RefTableId>
+      <RefTableName>streetNumber</RefTableName>
+      <RefKeyName>PK_streetNumber</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="346" parent="318" name="id">
+    <foreign-key id="342" parent="315" name="address_cityZipId_cityZipcode_id">
+      <ObjectId>820874687</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:58.473</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:58.473</ModifiedTimestamp>
+      <ColNames>cityZipId</ColNames>
+      <RefTableId>644874060</RefTableId>
+      <RefTableName>cityZipcode</RefTableName>
+      <RefKeyName>PK_cityZipcode</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="343" parent="316" name="id">
       <Position>1</Position>
-      <SequenceIdentity>1</SequenceIdentity>
-      <DataType>bigint|0s</DataType>
+      <SequenceIdentity>1(2)</SequenceIdentity>
+      <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="347" parent="318" name="name">
+    <column id="344" parent="316" name="customerName">
       <Position>2</Position>
       <DataType>nvarchar(255 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="348" parent="318" name="PK_street">
+    <column id="345" parent="316" name="customerAddress">
+      <Position>3</Position>
+      <DataType>nvarchar(255 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="346" parent="316" name="customerPhone">
+      <Position>4</Position>
+      <DataType>nchar(10 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="347" parent="316" name="bookingFrom">
+      <Position>5</Position>
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="348" parent="316" name="bookingTo">
+      <Position>6</Position>
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="349" parent="316" name="noOfMembers">
+      <Position>7</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="350" parent="316" name="totalAmount">
+      <Position>8</Position>
+      <DataType>decimal(19,5)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="351" parent="316" name="roomId">
+      <Position>9</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="352" parent="316" name="PK_booking">
       <Position>1</Position>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <index id="349" parent="318" name="IX_street_name">
+    <key id="353" parent="316" name="PK_booking">
+      <ObjectId>1012875371</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:59.220</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:59.220</ModifiedTimestamp>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>PK_booking</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="354" parent="316" name="booking_roomId_room_id">
+      <ObjectId>1124875770</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:59.770</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:59.770</ModifiedTimestamp>
+      <ColNames>roomId</ColNames>
+      <RefTableId>1060875542</RefTableId>
+      <RefTableName>rooms</RefTableName>
+      <RefKeyName>PK_rooms</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="355" parent="317" name="id">
+      <Position>1</Position>
+      <SequenceIdentity>1(4)</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="356" parent="317" name="bookingStatus">
+      <Position>2</Position>
+      <DataType>nvarchar(50 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="357" parent="317" name="PK_bookingStatus">
+      <Position>1</Position>
+      <ColNames>id</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="358" parent="317" name="PK_bookingStatus">
+      <ObjectId>980875257</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:59.040</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:59.040</ModifiedTimestamp>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>PK_bookingStatus</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="359" parent="318" name="id">
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="360" parent="318" name="name">
+      <Position>2</Position>
+      <DataType>nvarchar(255 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="361" parent="318" name="PK_city">
+      <Position>1</Position>
+      <ColNames>id</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <index id="362" parent="318" name="IX_city_name">
       <Position>2</Position>
       <ColNames>name</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="350" parent="318" name="PK_street">
-      <ObjectId>888350925</ObjectId>
-      <CreatedTimestamp>2021-05-13.13:57:17.413</CreatedTimestamp>
-      <ModifiedTimestamp>2021-05-13.13:57:17.413</ModifiedTimestamp>
+    <key id="363" parent="318" name="PK_city">
+      <ObjectId>628874003</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:57.750</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:57.750</ModifiedTimestamp>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>PK_street</UnderlyingIndexName>
+      <UnderlyingIndexName>PK_city</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="351" parent="319" name="id">
+    <column id="364" parent="319" name="id">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
-      <DataType>bigint|0s</DataType>
+      <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="352" parent="319" name="streetId">
+    <column id="365" parent="319" name="cityId">
       <Position>2</Position>
-      <DataType>bigint|0s</DataType>
+      <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="353" parent="319" name="streetNumber">
+    <column id="366" parent="319" name="zipCode">
       <Position>3</Position>
-      <DataType>bigint|0s</DataType>
+      <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="354" parent="319" name="PK_streetNumber">
+    <index id="367" parent="319" name="PK_cityZipcode">
       <Position>1</Position>
       <ColNames>id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <index id="355" parent="319" name="IX_streetNumber_streetId">
+    <index id="368" parent="319" name="IX_cityZipcode_cityId">
+      <Position>2</Position>
+      <ColNames>cityId</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="369" parent="319" name="IX_cityZipcode_zipCode">
+      <Position>3</Position>
+      <ColNames>zipCode</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="370" parent="319" name="PK_cityZipcode">
+      <ObjectId>660874117</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:57.843</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:57.843</ModifiedTimestamp>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>PK_cityZipcode</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="371" parent="319" name="cityZipcode_cityId_city_id">
+      <ObjectId>676874174</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:57.977</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:57.977</ModifiedTimestamp>
+      <ColNames>cityId</ColNames>
+      <RefTableId>612873946</RefTableId>
+      <RefTableName>city</RefTableName>
+      <RefKeyName>PK_city</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="372" parent="320" name="id">
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="373" parent="320" name="phone">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="374" parent="320" name="email">
+      <Position>3</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="375" parent="320" name="addressId">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="376" parent="320" name="personId">
+      <Position>5</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="377" parent="320" name="userId">
+      <Position>6</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="378" parent="320" name="PK_customer">
+      <Position>1</Position>
+      <ColNames>id</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="379" parent="320" name="PK_customer">
+      <ObjectId>884874915</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:58.717</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:58.717</ModifiedTimestamp>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>PK_customer</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="380" parent="320" name="customer_personId_person_id">
+      <ObjectId>900874972</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:58.763</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:58.763</ModifiedTimestamp>
+      <ColNames>personId</ColNames>
+      <RefTableId>836874744</RefTableId>
+      <RefTableName>person</RefTableName>
+      <RefKeyName>PK_person</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="381" parent="321" name="id">
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="382" parent="321" name="personId">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="383" parent="321" name="PK_employee">
+      <Position>1</Position>
+      <ColNames>id</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="384" parent="321" name="PK_employee">
+      <ObjectId>932875086</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:58.813</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:58.813</ModifiedTimestamp>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>PK_employee</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="385" parent="321" name="employee_personId_person_id">
+      <ObjectId>948875143</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:58.860</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:58.860</ModifiedTimestamp>
+      <ColNames>personId</ColNames>
+      <RefTableId>836874744</RefTableId>
+      <RefTableName>person</RefTableName>
+      <RefKeyName>PK_person</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="386" parent="322" name="id">
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="387" parent="322" name="firstName">
+      <Position>2</Position>
+      <DataType>nvarchar(255 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="388" parent="322" name="lastName">
+      <Position>3</Position>
+      <DataType>nvarchar(255 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="389" parent="322" name="PK_person">
+      <Position>1</Position>
+      <ColNames>id</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="390" parent="322" name="PK_person">
+      <ObjectId>852874801</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:58.673</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:58.673</ModifiedTimestamp>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>PK_person</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="391" parent="323" name="id">
+      <Position>1</Position>
+      <SequenceIdentity>1(7)</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="392" parent="323" name="roomTypeName">
+      <Position>2</Position>
+      <DataType>nvarchar(255 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="393" parent="323" name="PK_roomTypes">
+      <Position>1</Position>
+      <ColNames>id</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <index id="394" parent="323" name="IX_roomTypes_roomType">
+      <Position>2</Position>
+      <ColNames>roomTypeName</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="395" parent="323" name="PK_roomTypes">
+      <ObjectId>1044875485</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:59.407</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:59.407</ModifiedTimestamp>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>PK_roomTypes</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="396" parent="324" name="id">
+      <Position>1</Position>
+      <SequenceIdentity>1(10)</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="397" parent="324" name="roomNumber">
+      <Position>2</Position>
+      <DataType>nchar(5 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="398" parent="324" name="roomImage">
+      <Position>3</Position>
+      <DataType>nvarchar(255 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="399" parent="324" name="roomTypeId">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="400" parent="324" name="roomPrice">
+      <Position>5</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="401" parent="324" name="bookingStatusId">
+      <Position>6</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="402" parent="324" name="roomCapacity">
+      <Position>7</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="403" parent="324" name="roomDescription">
+      <Position>8</Position>
+      <DataType>nvarchar(255 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="404" parent="324" name="isActive">
+      <Position>9</Position>
+      <DataType>bit|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="405" parent="324" name="PK_rooms">
+      <Position>1</Position>
+      <ColNames>id</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="406" parent="324" name="PK_rooms">
+      <ObjectId>1076875599</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:59.633</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:59.633</ModifiedTimestamp>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>PK_rooms</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="407" parent="324" name="rooms_roomTypeId_roomTypes_id">
+      <ObjectId>1092875656</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:59.677</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:59.677</ModifiedTimestamp>
+      <ColNames>roomTypeId</ColNames>
+      <RefTableId>1028875428</RefTableId>
+      <RefTableName>roomTypes</RefTableName>
+      <RefKeyName>PK_roomTypes</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="408" parent="324" name="rooms_bookingStatusId_bookingStatus_id">
+      <ObjectId>1108875713</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:59.727</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:59.727</ModifiedTimestamp>
+      <ColNames>bookingStatusId</ColNames>
+      <RefTableId>964875200</RefTableId>
+      <RefTableName>bookingStatus</RefTableName>
+      <RefKeyName>PK_bookingStatus</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="409" parent="325" name="id">
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="410" parent="325" name="name">
+      <Position>2</Position>
+      <DataType>nvarchar(255 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="411" parent="325" name="PK_street">
+      <Position>1</Position>
+      <ColNames>id</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <index id="412" parent="325" name="IX_street_name">
+      <Position>2</Position>
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="413" parent="325" name="PK_street">
+      <ObjectId>708874288</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:58.020</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:58.020</ModifiedTimestamp>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>PK_street</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="414" parent="326" name="id">
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="415" parent="326" name="streetId">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="416" parent="326" name="streetNumber">
+      <Position>3</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="417" parent="326" name="PK_streetNumber">
+      <Position>1</Position>
+      <ColNames>id</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <index id="418" parent="326" name="IX_streetNumber_streetId">
       <Position>2</Position>
       <ColNames>streetId</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="356" parent="319" name="IX_streetNumber_streetNumber">
+    <index id="419" parent="326" name="IX_streetNumber_streetNumber">
       <Position>3</Position>
       <ColNames>streetNumber</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="357" parent="319" name="PK_streetNumber">
-      <ObjectId>920351039</ObjectId>
-      <CreatedTimestamp>2021-05-13.13:57:17.510</CreatedTimestamp>
-      <ModifiedTimestamp>2021-05-13.13:57:17.510</ModifiedTimestamp>
+    <key id="420" parent="326" name="PK_streetNumber">
+      <ObjectId>740874402</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:58.107</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:58.107</ModifiedTimestamp>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>PK_streetNumber</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="358" parent="319" name="streetNumber_streetId_street_id">
-      <ObjectId>936351096</ObjectId>
-      <CreatedTimestamp>2021-05-13.13:57:17.637</CreatedTimestamp>
-      <ModifiedTimestamp>2021-05-13.13:57:17.637</ModifiedTimestamp>
+    <foreign-key id="421" parent="326" name="streetNumber_streetId_street_id">
+      <ObjectId>756874459</ObjectId>
+      <CreatedTimestamp>2021-05-16.22:25:58.240</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-16.22:25:58.240</ModifiedTimestamp>
       <ColNames>streetId</ColNames>
-      <RefTableId>872350868</RefTableId>
+      <RefTableId>692874231</RefTableId>
       <RefTableName>street</RefTableName>
       <RefKeyName>PK_street</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
+    <argument id="422" parent="327" name="@RoomId">
+      <Position>1</Position>
+      <DataType>int|0s</DataType>
+    </argument>
+    <argument id="423" parent="327" name="@RoomNumber">
+      <Position>2</Position>
+      <DataType>varchar(5 char)|0s</DataType>
+    </argument>
+    <argument id="424" parent="327" name="@RoomImage">
+      <Position>3</Position>
+      <DataType>varchar(550 char)|0s</DataType>
+    </argument>
+    <argument id="425" parent="327" name="@RoomPrice">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </argument>
+    <argument id="426" parent="327" name="@BookingStatusId">
+      <Position>5</Position>
+      <DataType>int|0s</DataType>
+    </argument>
+    <argument id="427" parent="327" name="@RoomTypeId">
+      <Position>6</Position>
+      <DataType>int|0s</DataType>
+    </argument>
+    <argument id="428" parent="327" name="@RoomCapacity">
+      <Position>7</Position>
+      <DataType>int|0s</DataType>
+    </argument>
+    <argument id="429" parent="327" name="@RoomDescription">
+      <Position>8</Position>
+      <DataType>nvarchar(550 char)|0s</DataType>
+    </argument>
+    <argument id="430" parent="327" name="@IsActive">
+      <Position>9</Position>
+      <DataType>bit|0s</DataType>
+    </argument>
+    <argument id="431" parent="328" name="@RoomId">
+      <Position>1</Position>
+      <DataType>int|0s</DataType>
+    </argument>
+    <argument id="432" parent="329" name="@SearchText">
+      <Position>1</Position>
+      <DataType>varchar(50 char)|0s</DataType>
+    </argument>
   </database-model>
 </dataSource>

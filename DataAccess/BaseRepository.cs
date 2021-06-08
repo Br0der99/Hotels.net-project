@@ -9,6 +9,7 @@ namespace DataAccess
 {
     public abstract class BaseRepository
     {
+        // private fields for connectionString and configuration
         private readonly IConfiguration _configuration;
         private readonly string _ConnectionString;
         protected BaseRepository(IConfiguration configuration)

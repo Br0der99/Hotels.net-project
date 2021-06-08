@@ -17,6 +17,7 @@ namespace HotelService.Test
         [SetUp]
         public void SetUp()
         {
+            // a new mock of IRoomRepository
             _repository = new Mock<IRoomRepository>();
             _service = new RoomService(_repository.Object);
         }

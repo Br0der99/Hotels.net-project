@@ -7,6 +7,7 @@ using Model;
 
 namespace DataAccess
 {
+    // Interface with all of the repository methods
     public interface IRoomRepository
     {
         Task<IEnumerable<Room>> GetAllRooms();
@@ -16,27 +17,34 @@ namespace DataAccess
         Task<bool> UpdateRoom(Room room);
     }
 
+    // Public class implementing BaseRepository for WithConnection calls
+    // and the methods from IRoomRepository 
     public class RoomRepository : BaseRepository, IRoomRepository
     {
         public RoomRepository(IConfiguration configuration) : base(configuration)
         {
         }
-
+        
+        // Using Task<T> WithConnection<T> to get all rooms
         public async Task<IEnumerable<Room>> GetAllRooms()
         {
             return await WithConnection(async conn =>
             {
+                // Making the SQL query
                 var query = @"SELECT *
                     FROM rooms r
                     JOIN roomTypes rt on rt.Id = r.roomTypeId";
+                // Return a single type after combining types Room and RoomType
                 return await conn.QueryAsync<Room, RoomType, Room>(query, (room, RoomType) =>
                 {
                     room.RoomType = RoomType;
                     return room;
                 }, splitOn: "RoomTypeId");
+                // We define the splitOn because it is not default in this case (default = "id")
             });
         }
 
+        // Using Task<T> WithConnection<T> to get a room utilizing it's id
         public async Task<Room> GetRoomById(int id)
         {
             return await WithConnection(async conn =>
@@ -58,6 +66,7 @@ namespace DataAccess
             });
         }
 
+        // Using Task WithConnection to add a room to the DB
         public async Task AddRoom(Room room)
         {
             await WithConnection(async conn =>
